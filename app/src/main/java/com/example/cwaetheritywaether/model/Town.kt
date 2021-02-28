@@ -5,5 +5,4 @@ data class Town(val id : Long,
                 var temperature : Long,
                 val breeze : String,
                 val cloudCover : String) {
-
 }
