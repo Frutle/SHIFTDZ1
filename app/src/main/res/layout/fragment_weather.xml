@@ -5,17 +5,35 @@
     android:orientation="vertical"
     android:padding="25dp">
 
-    <TextView
-        android:id="@+id/today"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:text="Завтра"/>
+<!--    <TextView-->
+<!--        android:id="@+id/today"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:text="Завтра" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tomorrow"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:text="После завтра" />-->
+
+    <Button
+        android:id="@+id/bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="получить погоду"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:layout_gravity="center_horizontal"/>
 
     <TextView
-        android:id="@+id/tomorrow"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_marginTop="25dp"
-        android:text="После завтра" />
-    
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:textSize="25dp"
+        android:layout_margin="40dp"
+        android:text="погода"/>
+
 </LinearLayout>
