@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:padding="7dp">
+
+    <TextView
+        android:id="@+id/townName"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:hint="Город"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/townTemperature"
+        android:layout_width="200dp"
+        android:layout_height="30dp"/>
+
+    <TextView
+        android:id="@+id/townBreeze"
+        android:layout_width="200dp"
+        android:layout_height="30dp"/>
+
+    <TextView
+        android:id="@+id/townCloudCOver"
+        android:layout_width="200dp"
+        android:layout_height="30dp"/>
+
+</LinearLayout>

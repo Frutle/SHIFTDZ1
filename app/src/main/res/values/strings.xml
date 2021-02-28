@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CityWaether</string>
+    <string name="temperature">Температура</string>
+    <string name="town_format"> %1$s</string>
+    <string name="name_format">Город: %1$s</string>
+    <string name="breeze_format">Ветер: %1$s</string>
+    <string name="cloud_cover_format"> %1$s</string>
+    <string name="temperature_format"> %1d</string>
+</resources>

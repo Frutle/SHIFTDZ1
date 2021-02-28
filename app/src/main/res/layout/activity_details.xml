@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.details.DetailsActivity"
+    android:background="#BEE5FF">
+
+    <TextView
+        android:id="@+id/nameTown"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        tools:text="Tomsk" />
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/townTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:textSize="16sp"
+        tools:text="20" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/townTemp"
+        android:layout_marginTop="23dp"
+        />
+
+</RelativeLayout>
+
+    <TextView
+        android:id="@+id/breeze"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:textSize="16sp"
+        tools:text="Сильный" />
+
+    <TextView
+        android:id="@+id/cloudcover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:textSize="16sp"
+        tools:text="Ясно" />
+
+    <EditText
+        android:id="@+id/temperatureImput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:hint="указать температуру"
+        android:inputType="numberDecimal"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:hint="сохранить"
+        android:layout_width="match_parent"
+        android:layout_margin="24dp"
+        android:layout_height="wrap_content"
+        style="@style/RoundedCornerButton"/>
+
+</LinearLayout>
