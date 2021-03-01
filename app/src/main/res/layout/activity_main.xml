@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:id="@+id/ListTown"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".view.RecyclerViewTown.RecyclerViewActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -14,12 +14,13 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        app:title="@string/city_management"
+        app:titleMarginStart="100dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ListTown"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.RecyclerViewTown.RecyclerViewActivity"
         tools:listitem="@layout/town_item" />
 
 </LinearLayout>

@@ -8,14 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cwaetheritywaether.App
 import com.example.cwaetheritywaether.R
-import com.example.cwaetheritywaether.data.TownRepository
 import com.example.cwaetheritywaether.model.Town
 import com.example.cwaetheritywaether.view.details.DetailsActivity
 
 
 class RecyclerViewActivity : AppCompatActivity() ,TownView {
 
-    private val presenter by lazy { TownPresenter((application as App).TownRepository) }
+    private val presenter by lazy { TownPresenter(repository = (application as App).TownRepository) }
 
     private lateinit var townList: RecyclerView
 
@@ -30,9 +29,8 @@ class RecyclerViewActivity : AppCompatActivity() ,TownView {
         setContentView(R.layout.activity_main)
         presenter.attachView(this)
 
-        toolBar = findViewById(R.id.toolbar)
+        toolBar = (findViewById(R.id.toolbar) as Toolbar?)!!
         setSupportActionBar(toolBar)
-        toolBar?.title = getString(R.string.city_management)
 
         townList = findViewById(R.id.ListTown)
         townList.layoutManager = LinearLayoutManager(this)

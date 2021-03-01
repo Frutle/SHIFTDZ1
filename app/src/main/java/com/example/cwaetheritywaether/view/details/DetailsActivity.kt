@@ -10,8 +10,9 @@ import android.widget.TextView
 import com.example.cwaetheritywaether.App
 import com.example.cwaetheritywaether.R
 import com.example.cwaetheritywaether.data.TownRepository
+import com.example.cwaetheritywaether.model.Town
 
-class DetailsActivity : AppCompatActivity() {
+class DetailsActivity : AppCompatActivity(),DetailView {
 
     companion object {
 
@@ -24,7 +25,12 @@ class DetailsActivity : AppCompatActivity() {
         }
     }
 
-    private lateinit var TownRepository: TownRepository
+    private val presenter by lazy {
+        DetailPresenter(
+            repository = (application as App).TownRepository,
+            townId = intent.getLongExtra(EXTRA_ID, 0)
+        )
+    }
 
     private lateinit var townName: TextView
     private lateinit var townTemperature: TextView
@@ -36,17 +42,12 @@ class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
-        TownRepository = (application as App).TownRepository
-
         initViews()
 
+        presenter.attachView(this)
     }
 
     private fun initViews() {
-        val id = intent.getLongExtra(EXTRA_ID, 0)
-        val town = TownRepository.getTown(id)
-
-        if (town != null) {
             townName = findViewById(R.id.nameTown)
             townTemperature = findViewById(R.id.townTemp)
             townBreeze = findViewById(R.id.breeze)
@@ -54,21 +55,21 @@ class DetailsActivity : AppCompatActivity() {
             imputTemperature = findViewById(R.id.temperatureImput)
 
             saveButton = findViewById(R.id.saveButton)
-
-            townName.text = getString(R.string.name_format, town.townName)
-            townTemperature.text = getString(R.string.temperature_format, town.temperature)
-            townBreeze.text = getString(R.string.breeze_format,town.breeze)
-            townCloudCover.text = getString(R.string.cloud_cover_format,town.cloudCover)
-
-            saveButton.setOnClickListener {
-                town.temperature = imputTemperature.text.toString().toLong()
-                TownRepository.setTown(town)
-                finish()
-            }
-        } else {
-            finish()
         }
+
+    override fun bindTown(town: Town) {
+        townName.text = getString(R.string.name_format, town.townName)
+        townTemperature.text = getString(R.string.temperature_format, town.temperature)
+        townBreeze.text = getString(R.string.breeze_format, town.breeze)
+        townCloudCover.text = getString(R.string.cloud_cover_format, town.cloudCover)
+
+//        saveButton.setOnClickListener {
+//            town.temperature = imputTemperature.text.toString().toLong()
+//            TownRepository.setTown(town)
+//        }
     }
 
-
+    override fun closeScreen() {
+        finish()
+    }
 }
