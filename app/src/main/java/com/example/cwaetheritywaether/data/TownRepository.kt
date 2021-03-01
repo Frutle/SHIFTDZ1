@@ -2,7 +2,8 @@ package com.example.cwaetheritywaether.data
 
 import com.example.cwaetheritywaether.model.Town
 
-class townRepository {
+class TownRepository {
+
     private val city = mutableListOf(
         Town(5,"Томск",20,"5км.0/ч","Облачно"),
         Town(1,"Новосибирск",-30,"13.0км/ч","Небольшой снег"),

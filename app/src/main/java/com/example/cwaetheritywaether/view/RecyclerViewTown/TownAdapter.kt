@@ -1,4 +1,4 @@
-package com.example.cwaetheritywaether.view.details
+package com.example.cwaetheritywaether.view.RecyclerViewTown
 
 import android.view.LayoutInflater
 import android.view.View

@@ -9,7 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import com.example.cwaetheritywaether.App
 import com.example.cwaetheritywaether.R
-import com.example.cwaetheritywaether.data.townRepository
+import com.example.cwaetheritywaether.data.TownRepository
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -24,7 +24,7 @@ class DetailsActivity : AppCompatActivity() {
         }
     }
 
-    private lateinit var townRepository: townRepository
+    private lateinit var TownRepository: TownRepository
 
     private lateinit var townName: TextView
     private lateinit var townTemperature: TextView
@@ -36,7 +36,7 @@ class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
-        townRepository = (application as App).townRepository
+        TownRepository = (application as App).TownRepository
 
         initViews()
 
@@ -44,7 +44,7 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun initViews() {
         val id = intent.getLongExtra(EXTRA_ID, 0)
-        val town = townRepository.getTown(id)
+        val town = TownRepository.getTown(id)
 
         if (town != null) {
             townName = findViewById(R.id.nameTown)
@@ -62,7 +62,7 @@ class DetailsActivity : AppCompatActivity() {
 
             saveButton.setOnClickListener {
                 town.temperature = imputTemperature.text.toString().toLong()
-                townRepository.setTown(town)
+                TownRepository.setTown(town)
                 finish()
             }
         } else {

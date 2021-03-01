@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.RecyclerViewActivity"
+    tools:context=".view.RecyclerViewTown.RecyclerViewActivity"
     tools:listitem="@layout/town_item"
     android:background="#BEE5FF">
 

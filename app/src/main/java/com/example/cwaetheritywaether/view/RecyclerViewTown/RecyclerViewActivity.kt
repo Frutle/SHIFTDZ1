@@ -1,4 +1,4 @@
-package com.example.cwaetheritywaether.view
+package com.example.cwaetheritywaether.view.RecyclerViewTown
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cwaetheritywaether.App
 import com.example.cwaetheritywaether.R
-import com.example.cwaetheritywaether.data.townRepository
+import com.example.cwaetheritywaether.data.TownRepository
+import com.example.cwaetheritywaether.model.Town
 import com.example.cwaetheritywaether.view.details.DetailsActivity
-import com.example.cwaetheritywaether.view.details.TownAdapter
 
 
-class RecyclerViewActivity : AppCompatActivity() {
+class RecyclerViewActivity : AppCompatActivity() ,TownView {
 
-    private lateinit var townRepository: townRepository
+    private val presenter by lazy { TownPresenter((application as App).TownRepository) }
 
     private lateinit var townList: RecyclerView
 
@@ -25,7 +25,7 @@ class RecyclerViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        townRepository = (application as App).townRepository
+        presenter.attachView(this)
 
         townList = findViewById(R.id.ListTown)
         townList.layoutManager = LinearLayoutManager(this)
@@ -35,6 +35,19 @@ class RecyclerViewActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        adapter.town = townRepository.getTowns()
+        presenter.onViewResumed()
+    }
+
+    override fun bindTownList(list: List<Town>) {
+        adapter.town = list
+    }
+
+    override fun openTownDetailsScreen(townId: Long) {
+        DetailsActivity.start(this,townId)
+    }
+
+    override fun onDestroy() {
+        presenter.destroy()
+        super.onDestroy()
     }
 }
