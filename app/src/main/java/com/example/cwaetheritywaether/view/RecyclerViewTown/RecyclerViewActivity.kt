@@ -2,6 +2,7 @@ package com.example.cwaetheritywaether.view.RecyclerViewTown
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,8 @@ class RecyclerViewActivity : AppCompatActivity() ,TownView {
 
     private lateinit var townList: RecyclerView
 
+    private lateinit var toolBar: Toolbar
+
     private val adapter = TownAdapter{
         DetailsActivity.start(this, it.id)
     }
@@ -26,6 +29,10 @@ class RecyclerViewActivity : AppCompatActivity() ,TownView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         presenter.attachView(this)
+
+        toolBar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolBar)
+        toolBar?.title = getString(R.string.city_management)
 
         townList = findViewById(R.id.ListTown)
         townList.layoutManager = LinearLayoutManager(this)
