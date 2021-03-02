@@ -2,14 +2,8 @@ package com.example.cwaetheritywaether.view.details
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
-import android.os.Handler
-import android.text.InputType
-import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cwaetheritywaether.App
 import com.example.cwaetheritywaether.R
@@ -36,13 +30,13 @@ class DetailsActivity : AppCompatActivity(),DetailView {
         )
     }
 
-    private lateinit var font: Typeface
+
     private lateinit var townName: TextView
     private lateinit var townTemperature: TextView
     private lateinit var townBreeze: TextView
     private lateinit var townCloudCover: TextView
-    private lateinit var imputTemperature: EditText
-    private lateinit var saveButton: Button
+//    private lateinit var imputTemperature: EditText
+//    private lateinit var saveButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,23 +45,24 @@ class DetailsActivity : AppCompatActivity(),DetailView {
 
         presenter.attachView(this)
 
-        initFragment(savedInstanceState)
-
     }
 
     private fun initViews() {
 
             townName = findViewById(R.id.nameTown)
             townTemperature = findViewById(R.id.townTemp)
-            townBreeze = findViewById(R.id.breeze)
+            initFragment()
+            townBreeze = findViewById(R.id.tomorrow)
             townCloudCover = findViewById(R.id.cloudcover)
 //            imputTemperature = findViewById(R.id.temperatureImput)
 //
 //            saveButton = findViewById(R.id.saveButton)
+
         }
 
     override fun bindTown(town: Town) {
         townName.text = getString(R.string.name_format, town.townName)
+
         townTemperature.text = getString(R.string.temperature_format, town.temperature)
         townBreeze.text = getString(R.string.breeze_format, town.breeze)
         townCloudCover.text = getString(R.string.cloud_cover_format, town.cloudCover)
@@ -78,12 +73,13 @@ class DetailsActivity : AppCompatActivity(),DetailView {
 //        }
     }
 
-    fun initFragment(savedInstanceState: Bundle?){
-        if(savedInstanceState == null) {
+    fun initFragment(){
+//        if(savedInstanceState == null)
+            var fragment = FragmentWeather.newInstance()
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.fragmentContainer, FragmentWeather.newInstance()!!,"fragment-tag")
-                .commit(); }
+                .replace(R.id.fragmentContainer, fragment!!,"fragment-tag")
+                .commit();
         }
 
     override fun closeScreen() {

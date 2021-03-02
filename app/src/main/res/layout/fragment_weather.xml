@@ -9,13 +9,13 @@
         android:id="@+id/today"
         android:layout_width="match_parent"
         android:layout_height="25dp"
-        android:text="Небольшой снег"/>
+        android:text="Завтра"/>
 
     <TextView
         android:id="@+id/tomorrow"
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:layout_marginTop="25dp"
-        android:text="Облачно"/>
-
+        android:text="После завтра" />
+    
 </LinearLayout>

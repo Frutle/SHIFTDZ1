@@ -17,9 +17,8 @@ class FragmentWeather : Fragment() {
         }
     }
 
-
-    lateinit var today : TextView;
-    lateinit var tomorrow : TextView;
+    private lateinit var today: TextView
+    private lateinit var tomorrow: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,5 +31,10 @@ class FragmentWeather : Fragment() {
         tomorrow = view.findViewById(R.id.tomorrow)
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
 }
