@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.details.DetailsActivity"
-    android:background="#BEE5FF">
+    tools:context=".view.details.DetailsActivity">
 
     <TextView
         android:id="@+id/nameTown"
@@ -53,21 +52,27 @@
         android:textSize="16sp"
         tools:text="Ясно" />
 
-    <EditText
-        android:id="@+id/temperatureImput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:hint="указать температуру"
-        android:inputType="numberDecimal"
-        android:textSize="16sp" />
+<!--    <EditText-->
+<!--        android:id="@+id/temperatureImput"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="24dp"-->
+<!--        android:hint="указать температуру"-->
+<!--        android:inputType="numberDecimal"-->
+<!--        android:textSize="16sp" />-->
 
-    <Button
-        android:id="@+id/saveButton"
-        android:hint="сохранить"
+<!--    <Button-->
+<!--        android:id="@+id/saveButton"-->
+<!--        android:hint="сохранить"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_margin="24dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        style="@style/RoundedCornerButton"/>-->
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_margin="24dp"
-        android:layout_height="wrap_content"
-        style="@style/RoundedCornerButton"/>
+        android:layout_height="350dp"
+        android:layout_marginTop="150dp"/>
 
 </LinearLayout>

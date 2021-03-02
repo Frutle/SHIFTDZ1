@@ -7,4 +7,5 @@
     <string name="cloud_cover_format"> %1$s</string>
     <string name="temperature_format"> %1d</string>
     <string name="city_management">Управление городами</string>
+    <string name="go">go</string>
 </resources>
