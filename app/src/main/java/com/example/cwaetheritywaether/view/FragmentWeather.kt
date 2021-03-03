@@ -28,9 +28,6 @@ class FragmentWeather : Fragment() {
         }
     }
 
-    private lateinit var today: TextView
-    private lateinit var tomorrow: TextView
-    private lateinit var thisTown: Button
     var weather_url1 :String =""
 
     var api_id1 = "048f9fee82644297b2418d88cbb19722"
@@ -46,15 +43,10 @@ class FragmentWeather : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_weather, container, false)
 
-//        today = view.findViewById(R.id.today)
-//        tomorrow = view.findViewById(R.id.tomorrow)
-
         textView = view.findViewById(R.id.textView)
         bt = view.findViewById(R.id.bt)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity!!)
-
-
         return view
     }
 

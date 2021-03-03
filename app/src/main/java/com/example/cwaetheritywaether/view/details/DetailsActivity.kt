@@ -30,13 +30,10 @@ class DetailsActivity : AppCompatActivity(),DetailView {
         )
     }
 
-
     private lateinit var townName: TextView
     private lateinit var townTemperature: TextView
     private lateinit var townBreeze: TextView
     private lateinit var townCloudCover: TextView
-//    private lateinit var imputTemperature: EditText
-//    private lateinit var saveButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,37 +41,25 @@ class DetailsActivity : AppCompatActivity(),DetailView {
         initViews()
 
         presenter.attachView(this)
-
     }
 
     private fun initViews() {
-
             townName = findViewById(R.id.nameTown)
             townTemperature = findViewById(R.id.townTemp)
             initFragment()
             townBreeze = findViewById(R.id.tomorrow)
             townCloudCover = findViewById(R.id.cloudcover)
-//            imputTemperature = findViewById(R.id.temperatureImput)
-//
-//            saveButton = findViewById(R.id.saveButton)
-
         }
 
     override fun bindTown(town: Town) {
         townName.text = getString(R.string.name_format, town.townName)
-
         townTemperature.text = getString(R.string.temperature_format, town.temperature)
         townBreeze.text = getString(R.string.breeze_format, town.breeze)
         townCloudCover.text = getString(R.string.cloud_cover_format, town.cloudCover)
 
-//        saveButton.setOnClickListener {
-//            town.temperature = imputTemperature.text.toString().toLong()
-//            TownRepository.setTown(town)
-//        }
     }
 
     fun initFragment(){
-//        if(savedInstanceState == null)
             var fragment = FragmentWeather.newInstance()
             supportFragmentManager
                 .beginTransaction()
@@ -85,19 +70,5 @@ class DetailsActivity : AppCompatActivity(),DetailView {
     override fun closeScreen() {
         finish()
     }
-
-//    private fun showAlertDialog() {
-//        val builder = AlertDialog.Builder(this)
-//        builder.setTitle("Выберите город")
-//        val editText = EditText(this)
-//        editText.inputType = InputType.TYPE_CLASS_TEXT
-//        builder.setView(editText)
-//        builder.setPositiveButton(
-//            R.string.go
-//        ) { dialog, which -> changeTown(editText.text.toString()) }
-//        builder.show()
-//    }
-
-//    fun changeTown(town: String?) {}
 
 }
