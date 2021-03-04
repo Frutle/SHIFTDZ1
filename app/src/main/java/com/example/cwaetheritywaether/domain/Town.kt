@@ -1,4 +1,4 @@
-package com.example.cwaetheritywaether.model
+package com.example.cwaetheritywaether.domain
 
 data class Town(val id : Long,
                 val townName: String,

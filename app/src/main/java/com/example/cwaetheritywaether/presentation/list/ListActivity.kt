@@ -1,20 +1,23 @@
-package com.example.cwaetheritywaether.view.RecyclerViewTown
+package com.example.cwaetheritywaether.presentation.list
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cwaetheritywaether.App
 import com.example.cwaetheritywaether.R
-import com.example.cwaetheritywaether.model.Town
-import com.example.cwaetheritywaether.view.details.DetailsActivity
+import com.example.cwaetheritywaether.domain.Town
+import com.example.cwaetheritywaether.presentation.list.details.DetailsActivity
 
 
-class RecyclerViewActivity : AppCompatActivity() ,TownView {
 
-    private val presenter by lazy { TownPresenter(repository = (application as App).TownRepository) }
+class ListActivity : AppCompatActivity()  {
+
+    private val viewModel: ListViewModel by viewModels {
+        ListViewModelFactory()
+    }
 
     private lateinit var townList: RecyclerView
 
@@ -27,7 +30,7 @@ class RecyclerViewActivity : AppCompatActivity() ,TownView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        presenter.attachView(this)
+        viewModel.townsList.observe(this,::bindTownsList)
 
         toolBar = (findViewById(R.id.toolbar) as Toolbar?)!!
         setSupportActionBar(toolBar)
@@ -38,21 +41,13 @@ class RecyclerViewActivity : AppCompatActivity() ,TownView {
         townList.adapter = adapter
     }
 
-    override fun onResume() {
-        super.onResume()
-        presenter.onViewResumed()
-    }
-
-    override fun bindTownList(list: List<Town>) {
+    private fun bindTownsList(list: List<Town>) {
         adapter.town = list
     }
 
-    override fun openTownDetailsScreen(townId: Long) {
-        DetailsActivity.start(this,townId)
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadTowns()
     }
 
-    override fun onDestroy() {
-        presenter.destroy()
-        super.onDestroy()
-    }
 }

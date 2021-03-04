@@ -1,4 +1,4 @@
-package com.example.cwaetheritywaether.view.RecyclerViewTown
+package com.example.cwaetheritywaether.presentation.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cwaetheritywaether.R
-import com.example.cwaetheritywaether.model.Town
+import com.example.cwaetheritywaether.domain.Town
 
 class TownAdapter(private val onClick: (Town) -> Unit) : RecyclerView.Adapter<TownAdapter.townHolder>() {
 

@@ -1,16 +1,17 @@
-package com.example.cwaetheritywaether.view.details
+package com.example.cwaetheritywaether.presentation.list.details
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cwaetheritywaether.App
 import com.example.cwaetheritywaether.R
-import com.example.cwaetheritywaether.model.Town
+import com.example.cwaetheritywaether.domain.Town
 import com.example.cwaetheritywaether.view.FragmentWeather
 
-class DetailsActivity : AppCompatActivity(),DetailView {
+class DetailsActivity : AppCompatActivity(){
 
     companion object {
 
@@ -23,11 +24,9 @@ class DetailsActivity : AppCompatActivity(),DetailView {
         }
     }
 
-    private val presenter by lazy {
-        DetailPresenter(
-            repository = (application as App).TownRepository,
-            townId = intent.getLongExtra(EXTRA_ID, 0)
-        )
+    private val viewModel: DetailViewModel by viewModels{
+        val id = intent.getLongExtra(EXTRA_ID,0)
+        DetailViewModelFactory(id)
     }
 
     private lateinit var townName: TextView
@@ -38,9 +37,9 @@ class DetailsActivity : AppCompatActivity(),DetailView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
+        viewModel.town.observe(this, ::bindTown)
+        viewModel.closeScreenEvent.observe(this,{closeScreen()})
         initViews()
-
-        presenter.attachView(this)
     }
 
     private fun initViews() {
@@ -51,12 +50,11 @@ class DetailsActivity : AppCompatActivity(),DetailView {
             townCloudCover = findViewById(R.id.cloudcover)
         }
 
-    override fun bindTown(town: Town) {
+        fun bindTown(town: Town) {
         townName.text = getString(R.string.name_format, town.townName)
         townTemperature.text = getString(R.string.temperature_format, town.temperature)
         townBreeze.text = getString(R.string.breeze_format, town.breeze)
         townCloudCover.text = getString(R.string.cloud_cover_format, town.cloudCover)
-
     }
 
     fun initFragment(){
@@ -67,7 +65,7 @@ class DetailsActivity : AppCompatActivity(),DetailView {
                 .commit();
         }
 
-    override fun closeScreen() {
+    fun closeScreen() {
         finish()
     }
 

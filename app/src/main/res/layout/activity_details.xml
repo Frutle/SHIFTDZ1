@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.details.DetailsActivity">
+    tools:context=".presentation.list.details.DetailsActivity">
 
     <TextView
         android:id="@+id/nameTown"
