@@ -1,6 +1,5 @@
-package com.example.cwaetheritywaether.view
+package com.example.cwaetheritywaether.presentation.weather
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +17,6 @@ import com.android.volley.toolbox.Volley
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import org.json.JSONObject
-
 
 class FragmentWeather : Fragment() {
 
@@ -46,7 +44,7 @@ class FragmentWeather : Fragment() {
         textView = view.findViewById(R.id.textView)
         bt = view.findViewById(R.id.bt)
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity!!)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         return view
     }
 
@@ -85,4 +83,5 @@ class FragmentWeather : Fragment() {
             Response.ErrorListener { textView!!.text = "Ошибка" })
         queue.add(stringReq)
     }
+
 }

@@ -1,4 +1,4 @@
-package com.example.cwaetheritywaether.presentation.list.details
+package com.example.cwaetheritywaether.presentation.details
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +9,6 @@ import com.example.cwaetheritywaether.presentation.LiveEvent
 
 class DetailViewModel(
     getTownUseCase: GetTownUseCase,
-    private val setTownUseCase: SetTownUseCase,
     id: Long) : ViewModel() {
 
     val town = MutableLiveData<Town>()
@@ -24,10 +23,5 @@ class DetailViewModel(
         } else {
             closeScreenEvent(Unit)
         }
-    }
-
-    fun saveTOwn(editedTown: Town){
-        setTownUseCase(editedTown)
-        closeScreenEvent()
     }
 }

@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cwaetheritywaether.R
 import com.example.cwaetheritywaether.domain.Town
-import com.example.cwaetheritywaether.presentation.list.details.DetailsActivity
+import com.example.cwaetheritywaether.presentation.details.DetailsActivity
 
 
 
-class ListActivity : AppCompatActivity()  {
+class TownsActivity : AppCompatActivity()  {
 
     private val viewModel: ListViewModel by viewModels {
         ListViewModelFactory()

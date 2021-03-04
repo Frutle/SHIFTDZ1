@@ -1,4 +1,4 @@
-package com.example.cwaetheritywaether.presentation.list.details
+package com.example.cwaetheritywaether.presentation.details
 
 import android.content.Context
 import android.content.Intent
@@ -6,10 +6,9 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.cwaetheritywaether.App
 import com.example.cwaetheritywaether.R
 import com.example.cwaetheritywaether.domain.Town
-import com.example.cwaetheritywaether.view.FragmentWeather
+import com.example.cwaetheritywaether.presentation.weather.FragmentWeather
 
 class DetailsActivity : AppCompatActivity(){
 
